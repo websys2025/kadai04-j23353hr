@@ -73,6 +73,37 @@
 
             // 課題4-2. ここにコードを書く
             // 商品表の作成
+            for (let i = 0; i < item_list.length; i++) {
+                // 行の追加
+                let row = document.createElement("tr");
+
+                // 商品名
+                let nameCell = document.createElement("td");
+                nameCell.textContent = item_list[i].name;
+                row.appendChild(nameCell);
+
+                // 金額
+                let priceCell = document.createElement("td");
+                priceCell.textContent = item_list[i].price + "円";
+                row.appendChild(priceCell);
+
+                // 在庫数
+                let stockCell = document.createElement("td");
+                stockCell.id = "stock" + item_list[i].id;
+                stockCell.textContent = item_list[i].stock + "個";
+                row.appendChild(stockCell);
+
+                // 購入ボタン
+                let buttonCell = document.createElement("td");
+                let button = document.createElement("button");
+                button.id = "button" + item_list[i].id;
+                button.textContent = "購入";
+                buttonCell.appendChild(button);
+                row.appendChild(buttonCell);
+
+                // 行をテーブルに追加
+                itemArea.appendChild(row);
+            }
 
             // クリックイベント時の購入処理の設定
             for (let i=0; i<item_list.length; i++) {
