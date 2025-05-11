@@ -53,6 +53,8 @@
                         
                         // 課題4-3. ここにコードを書く
                         // 在庫用のエレメントを抽出し、HTML内の個数を更新
+                        const stockCell = document.getElementById("stock" + this.id);
+                        stockCell.textContent = this.stock;
                     } else console.log(this.name+"は商品の在庫がないため購入できません。");
                 }
             } // End of Item class
@@ -84,13 +86,13 @@
 
                 // 金額
                 let priceCell = document.createElement("td");
-                priceCell.textContent = item_list[i].price + "円";
+                priceCell.textContent = item_list[i].price;
                 row.appendChild(priceCell);
 
                 // 在庫数
                 let stockCell = document.createElement("td");
                 stockCell.id = "stock" + item_list[i].id;
-                stockCell.textContent = item_list[i].stock + "個";
+                stockCell.textContent = item_list[i].stock;
                 row.appendChild(stockCell);
 
                 // 購入ボタン
