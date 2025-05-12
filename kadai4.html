@@ -31,12 +31,11 @@
                     Item.number++;
                 }
 
-                // 商品一覧の表示関数
+                // 商品一覧の表示関数(コンソールで表示→console.log()が重要)
                 static showItemList(list) {
                     console.log("商品は以下の" + Item.number + "種類です。");
 
-                    // 配列の内容を項目毎に出力
-                    // 課題4-1. ここにコードを書く
+                    // 配列の内容を項目毎に出力 (呼び出すときは「クラス名.constructorで定義した変数」)
                     for (let item of list) {
                         console.log("商品番号: " + item.id + ", 商品名: " + item.name + ", 金額: " + item.price + ", 在庫数: " + item.stock);
                     }
@@ -55,6 +54,7 @@
                         // 在庫用のエレメントを抽出し、HTML内の個数を更新
                         const stockCell = document.getElementById("stock" + this.id);
                         stockCell.textContent = this.stock;
+
                     } else console.log(this.name+"は商品の在庫がないため購入できません。");
                 }
             } // End of Item class
@@ -86,13 +86,13 @@
 
                 // 金額
                 let priceCell = document.createElement("td");
-                priceCell.textContent = item_list[i].price;
+                priceCell.textContent = item_list[i].price ;
                 row.appendChild(priceCell);
 
                 // 在庫数
                 let stockCell = document.createElement("td");
                 stockCell.id = "stock" + item_list[i].id;
-                stockCell.textContent = item_list[i].stock;
+                stockCell.textContent = item_list[i].stock ;
                 row.appendChild(stockCell);
 
                 // 購入ボタン
@@ -111,6 +111,7 @@
             for (let i=0; i<item_list.length; i++) {
                 // 課題4-3. ここにコードを書く
                 // 課題4-1, 4-2のコードが完成したら、以下のコメントを外す
+                //購入ボタンを押したとき、コンソールでエラーが発生せず、在庫数が減ったら成功
                 document.getElementById("button"+item_list[i].id).onclick = () => {
                     item_list[i].buyItem();
                 }
