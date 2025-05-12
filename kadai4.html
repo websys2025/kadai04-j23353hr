@@ -55,6 +55,8 @@
                         const stockCell = document.getElementById("stock" + this.id);
                         stockCell.textContent = this.stock;
 
+                        console.log("残りは" + this.stock + "個です。");
+
                     } else console.log(this.name+"は商品の在庫がないため購入できません。");
                 }
             } // End of Item class
