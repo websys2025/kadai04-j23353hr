@@ -76,7 +76,7 @@
             }
 
             // 課題4-2. ここにコードを書く
-            // 商品表の作成
+            // 商品表の作成・HTMLに表示する p231～233参照
             for (let i = 0; i < item_list.length; i++) {
                 // 行の追加
                 let row = document.createElement("tr");
@@ -114,6 +114,7 @@
                 // 課題4-3. ここにコードを書く
                 // 課題4-1, 4-2のコードが完成したら、以下のコメントを外す
                 //購入ボタンを押したとき、コンソールでエラーが発生せず、在庫数が減ったら成功
+                //ボタンのアクションを設定する
                 document.getElementById("button"+item_list[i].id).onclick = () => {
                     item_list[i].buyItem();
                 }
