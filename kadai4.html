@@ -14,7 +14,7 @@
         
         <table id="item_area" border="1"></table>
         <script>
-	        // 所持金の変数
+		// 所持金の変数
             let wallet = 1000;
             
             // 商品一覧を記録する連想配列の配列
@@ -52,21 +52,39 @@
                 }
                 
                 // 商品購入の関数
-                buyItem() {          
-                    if (this.stock >= 1) { 
+                buyItem() {         
+			//所持金を判定し、結果を表示 
+                        const messageArea = document.getElementById("message-area");
+
+			//在庫がない場合(位置を変更)
+                        if (this.stock < 1) {
+                            messageArea.textContent = `${this.name}は在庫がないため購入できません。`;
+                            return;
+                        }
+
+			//所持金が足りない場合
+                        if (wallet < this.price) {
+                            messageArea.textContent = `所持金が不足しています（${this.name}は${this.price}円、残金は${wallet}円）。`;
+                            return;
+                        }
+
+			
+			//どちらの判定も当てはならない場合()
                         console.log("商品番号: "+this.id+", 商品名: "+this.name+"を購入します。");
+
                         // 課題4-2. ここにコードを書く
                         // 購入による商品の在庫削減処理
                         this.stock--;
-                        
+			wallet -= this.price;  //オプション：買った商品の価格分、減算。
+
                         // 課題4-3. ここにコードを書く
                         // 在庫用のエレメントを抽出し、HTML内の個数を更新
-                        const stockCell = document.getElementById("stock" + this.id);
-                        stockCell.textContent = this.stock;
+                        // オプション課題：在庫数と所持金の表示を更新
+                        document.getElementById("stock" + this.id).textContent = this.stock;
+                        document.getElementById("wallet").textContent = wallet;
 
                         console.log("残りは" + this.stock + "個です。");
-
-                    } else console.log(this.name+"は商品の在庫がないため購入できません。");
+                        messageArea.textContent = `${this.name}を購入しました。残り${this.stock}個、残金${wallet}円。`;
                 }
             } // End of Item class
 
